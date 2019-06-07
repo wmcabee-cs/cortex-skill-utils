@@ -29,11 +29,11 @@ class CortexLocalFS(CortexFS):
         df.to_parquet(outfile, compression='snappy', index=False)
 
         # write metadata file
-        outfile = basefile.with_suffix('.cortex_meta')
+        meta_f = basefile.with_suffix('.cortex_meta')
         meta = {'domain_type': domain_type}
         json_txt = json.dumps(meta)
-        outfile.write_text(json_txt)
-        print(f">>wrote {outfile}")
+        meta_f.write_text(json_txt)
+        print(f"[LOCAL_FS]>> wrote {outfile}, [{domain_type}]")
 
     def read(self, from_path: str) -> FSContent:
 
@@ -54,8 +54,5 @@ class CortexLocalFS(CortexFS):
         content = FSContent(value=df,
                             domain_type=domain_type,
                             native_format='pandas_df')
+        print(f"[LOCAL_FS]>> read {infile}, [{domain_type}, pandas_df]")
         return content
-
-        # write parquet file
-
-        # write metadata file

@@ -35,7 +35,7 @@ class CortexManagedContent(CortexFS):
 
         # write parquet file
         outfile = basefile.with_suffix('.parquet.snappy')
-        content_type = f'application/vnd.cogsale.parquet+snappy'
+        content_type = f'application/vnd.cogscale.parquet+snappy'
         buffer = BytesIO()
         with buffer as fh:
             df.to_parquet(fname=fh, index=None, compression='snappy')
@@ -56,7 +56,7 @@ class CortexManagedContent(CortexFS):
                                         stream=fh,
                                         content_type=meta_content_type,
                                         retries=self.retries)
-        print(f">> uploaded '{outfile}' [{domain_type}, {content_type}]")
+        print(f"[MANAGED CONTENT]>> wrote '{outfile}' [{domain_type}]")
 
     def read(self, from_path: str) -> FSContent:
         from_path = Path(from_path)
@@ -86,5 +86,5 @@ class CortexManagedContent(CortexFS):
         content = FSContent(value=df,
                             domain_type=domain_type,
                             native_format=native_format)
-        print(f">> downloaded '{infile}' [{domain_type},{native_format}]")
+        print(f"[MANAGED CONTENT]>> read '{infile}' [{domain_type},{native_format}]")
         return content
