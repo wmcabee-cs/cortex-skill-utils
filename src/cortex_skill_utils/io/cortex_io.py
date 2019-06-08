@@ -38,7 +38,7 @@ class CortexManagedContent(CortexFS):
         content_type = f'application/vnd.cogscale.parquet+snappy'
         buffer = BytesIO()
         with buffer as fh:
-            df.to_parquet(fname=fh, index=None, compression='snappy')
+            df.to_parquet(fname=fh, compression='snappy')
             buffer.seek(0)
             self.client.uploadStreaming(key=str(outfile),
                                         stream=fh,

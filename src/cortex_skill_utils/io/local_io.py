@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 from .fs_types import CortexFS
 from ..data_types.api_types import FSContent
-# from ..debug_utils import retval
+from ..debug_utils import retval
 
 import json
 
@@ -26,7 +26,7 @@ class CortexLocalFS(CortexFS):
 
         # write parquet file
         outfile = basefile.with_suffix('.parquet.snappy')
-        df.to_parquet(outfile, compression='snappy', index=False)
+        df.to_parquet(outfile, compression='snappy')
 
         # write metadata file
         meta_f = basefile.with_suffix('.cortex_meta')
