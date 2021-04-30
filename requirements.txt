@@ -57,7 +57,7 @@ snaptime==0.2.4
 tenacity==5.0.2
 traitlets==4.3.2
 tzlocal==1.5.1
-urllib3==1.25.3
+urllib3==1.25.8
 wcwidth==0.1.7
 websocket-client==0.56.0
 Werkzeug==0.15.4
