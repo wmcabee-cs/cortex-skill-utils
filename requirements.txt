@@ -40,7 +40,7 @@ ptyprocess==0.6.0
 pydantic==0.27
 pydash==4.7.5
 Pygments==2.4.2
-PyJWT==1.7.1
+PyJWT==2.4.0
 pyparsing==2.4.0
 python-dateutil==2.8.0
 pytz==2019.1
